@@ -4,9 +4,9 @@ const APP_FILES = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./icon_180×180.png",
-  "./icon_192×192.png",
-  "./icon_512×512.png"
+  "./icon_180.png",
+  "./icon_192.png",
+  "./icon_512.png"
 ];
 
 self.addEventListener(
