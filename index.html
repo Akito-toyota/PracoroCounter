@@ -7,6 +7,33 @@
   content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
 >
 
+<title>PracoroCounter</title>
+
+<link
+  rel="manifest"
+  href="./manifest.json"
+>
+
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="./icon-180.png?v=2"
+>
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="./icon-192.png?v=2"
+>
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="512x512"
+  href="./icon-512.png?v=2"
+>
+
 <meta
   name="apple-mobile-web-app-capable"
   content="yes"
@@ -24,7 +51,12 @@
 
 <meta
   name="apple-mobile-web-app-title"
-  content="PrakoroCounter"
+  content="PracoroCounter"
+>
+
+<meta
+  name="application-name"
+  content="PracoroCounter"
 >
 
 <meta
@@ -32,19 +64,15 @@
   content="#05070a"
 >
 
-<title>PrakoroCounter</title>
-
 <style>
 :root{
   --page-bg:#05070a;
   --panel:#0b1017;
   --line:#263447;
   --text:#eaf2ff;
-
   --green:#00d47b;
   --yellow:#ffd400;
   --red:#ff334f;
-
   --app-height:100svh;
 }
 
@@ -57,29 +85,22 @@ html,
 body{
   width:100%;
   height:100%;
-
   margin:0;
   padding:0;
-
   overflow:hidden;
   overscroll-behavior:none;
-
   background:#05070a;
 }
 
 body{
   position:fixed;
   inset:0;
-
   width:100%;
   height:var(--app-height);
-
   background:var(--page-bg);
   color:var(--text);
-
   overflow:hidden;
   overscroll-behavior:none;
-
   font-family:
     system-ui,
     -apple-system,
@@ -87,9 +108,7 @@ body{
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     sans-serif;
-
   touch-action:manipulation;
-
   -webkit-user-select:none;
   user-select:none;
 }
@@ -99,82 +118,54 @@ select{
   font-family:inherit;
 }
 
-/* =========================
-   全体
-========================= */
+button{
+  -webkit-user-select:none;
+  user-select:none;
+}
 
 .app{
   width:100%;
   max-width:600px;
-
   height:var(--app-height);
-
   margin:0 auto;
-
-  padding-top:
-    max(4px,env(safe-area-inset-top));
-
-  padding-right:
-    max(6px,env(safe-area-inset-right));
-
-  padding-bottom:
-    max(8px,env(safe-area-inset-bottom));
-
-  padding-left:
-    max(6px,env(safe-area-inset-left));
-
+  padding-top:max(4px,env(safe-area-inset-top));
+  padding-right:max(6px,env(safe-area-inset-right));
+  padding-bottom:max(8px,env(safe-area-inset-bottom));
+  padding-left:max(6px,env(safe-area-inset-left));
   display:flex;
   flex-direction:column;
-
   gap:4px;
-
   overflow:hidden;
 }
 
-/* =========================
-   ポケモン選択＋RESET
-========================= */
-
 .top-control{
   width:100%;
-
   flex:0 0 44px;
-
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
-
   gap:5px;
 }
 
 .select-frame{
   min-width:0;
-
   position:relative;
 }
 
 .pokemon-select{
   width:100%;
   height:44px;
-
   padding:5px 38px 5px 9px;
-
   appearance:none;
   -webkit-appearance:none;
-
   background:#0c121b;
   color:#ffffff;
-
   border:1px solid #354255;
   border-radius:9px;
-
   font-size:clamp(18px,5vw,24px);
   font-weight:950;
-
   text-align:center;
   text-align-last:center;
-
   outline:none;
-
   cursor:pointer;
   touch-action:manipulation;
 }
@@ -182,7 +173,6 @@ select{
 .pokemon-select option{
   background:#ffffff;
   color:#000000;
-
   font-weight:800;
 }
 
@@ -192,138 +182,81 @@ select{
 
 .select-frame::after{
   content:"▼";
-
   position:absolute;
-
   right:13px;
   top:50%;
-
   transform:translateY(-50%);
-
   color:#ffffff;
-
   font-size:11px;
-
   pointer-events:none;
 }
 
 .reset{
   height:44px;
-
   padding:5px 13px;
-
   background:#171f2b;
   color:#ffffff;
-
   border:1px solid #3a4656;
   border-radius:9px;
-
   font-size:12px;
   font-weight:900;
-
   cursor:pointer;
   touch-action:manipulation;
-
-  -webkit-user-select:none;
-  user-select:none;
 }
 
 .reset:active{
   transform:scale(.96);
-
   background:#212c3a;
 }
 
-/* =========================
-   メインカード
-========================= */
-
 .card{
   width:100%;
-
   flex:1 1 auto;
   min-height:0;
-
   padding:4px;
-
   background:var(--panel);
-
   border:1px solid #29364a;
   border-radius:15px;
-
   display:flex;
   flex-direction:column;
-
   overflow:hidden;
 }
-
-/* =========================
-   HPモニター
-========================= */
 
 .digital-unit{
   width:100%;
   height:100%;
-
   flex:1 1 auto;
   min-height:0;
-
   padding:3px;
-
   background:#070a0f;
-
   border:1px solid #29364a;
   border-radius:13px;
-
   display:grid;
-
-  /*
-    ヘッダー
-    ダイヤル＋進化ボタン領域
-    操作説明
-    下部表示
-  */
   grid-template-rows:
     17px
     minmax(0,1fr)
     17px
     18px;
-
   overflow:hidden;
-
   position:relative;
 }
-
-/* =========================
-   モニターヘッダー
-========================= */
 
 .digital-header{
   width:100%;
   min-width:0;
-
   padding:0 5px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   color:#69778a;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:8px;
   font-weight:900;
-
   letter-spacing:1px;
 }
 
 #monitorName{
   min-width:0;
-
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -331,51 +264,28 @@ select{
 
 .status-area{
   flex-shrink:0;
-
   display:flex;
   align-items:center;
-
   gap:4px;
 }
 
 .status-light{
   width:6px;
   height:6px;
-
   background:var(--green);
-
   border-radius:50%;
 }
-
-/* =========================
-   ダイヤル＋進化ボタン領域
-
-   下側に進化ボタン専用の
-   52pxを確保しています。
-========================= */
 
 .dial-stage{
   width:100%;
   height:100%;
-
   min-height:0;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   position:relative;
-
   padding-bottom:52px;
 }
-
-/* =========================
-   円のサイズ
-
-   画面幅だけでなく、
-   実際に残った高さからも
-   サイズを決定します。
-========================= */
 
 .dial-area{
   width:min(
@@ -383,31 +293,19 @@ select{
     calc(var(--app-height) - 164px),
     390px
   );
-
   max-width:100%;
-
   aspect-ratio:1 / 1;
-
   flex:0 1 auto;
-
   position:relative;
 }
-
-/* =========================
-   ダイヤル操作領域
-========================= */
 
 .dial-container{
   width:100%;
   height:100%;
-
   position:relative;
-
   cursor:grab;
-
   touch-action:none;
   overscroll-behavior:none;
-
   -webkit-user-select:none;
   user-select:none;
 }
@@ -419,244 +317,148 @@ select{
 .hp-dial{
   width:100%;
   height:100%;
-
   display:block;
-
   overflow:visible;
-
   touch-action:none;
   overscroll-behavior:none;
 }
 
-/* =========================
-   円外装
-========================= */
-
 .outer-case{
   fill:#05080c;
-
   stroke:#263447;
   stroke-width:5;
 }
 
 .outer-case-detail{
   fill:none;
-
   stroke:#111924;
   stroke-width:10;
 }
 
-/* =========================
-   HPゲージ
-========================= */
-
 .dial-track{
   fill:none;
-
   stroke:#1d2734;
   stroke-width:24;
 }
 
 .dial-progress{
   fill:none;
-
   stroke:var(--green);
   stroke-width:24;
-
   transform:rotate(-90deg);
   transform-origin:180px 180px;
 }
 
-/* =========================
-   中央
-========================= */
-
 .dial-center{
   fill:#05080c;
-
   stroke:#28374a;
   stroke-width:4;
 }
 
 .dial-center-inner{
   fill:#090e14;
-
   stroke:#162333;
   stroke-width:2;
 }
 
-/* =========================
-   HP表示
-========================= */
-
 .dial-hp-label{
   fill:#69778a;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:17px;
   font-weight:900;
-
   letter-spacing:6px;
-
   text-anchor:middle;
 }
 
 .dial-hp-value{
   fill:var(--green);
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:82px;
   font-weight:950;
-
   text-anchor:middle;
-
   font-variant-numeric:tabular-nums;
 }
 
 .dial-unit-label{
   fill:#526175;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:11px;
   font-weight:900;
-
   letter-spacing:3px;
-
   text-anchor:middle;
 }
 
 .dial-percent{
   fill:#8290a3;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:13px;
   font-weight:900;
-
   text-anchor:middle;
 }
 
-/* =========================
-   目盛り
-========================= */
-
 .scale-line{
   stroke:#46566a;
-
   stroke-width:2;
   stroke-linecap:round;
-
   pointer-events:none;
 }
 
 .scale-line.major{
   stroke:#8d9bad;
-
   stroke-width:4;
 }
 
 .scale-label{
   fill:#aebccc;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:12px;
   font-weight:900;
-
   text-anchor:middle;
-
   pointer-events:none;
 }
 
-/* =========================
-   操作ノブ
-========================= */
-
 .dial-handle{
   fill:#05080c;
-
   stroke:var(--green);
   stroke-width:6;
-
   pointer-events:none;
 }
 
 .handle-center{
   fill:var(--green);
-
   pointer-events:none;
 }
 
 .handle-line{
   stroke:#05080c;
-
   stroke-width:2;
   stroke-linecap:round;
-
   pointer-events:none;
 }
 
-/* =========================
-   進化ボタン
-
-   円の右下外側へ配置。
-   ボタン用スペースを
-   dial-stage側で確保済み。
-========================= */
-
 .evolution-button{
   position:absolute;
-
   right:1%;
   bottom:-46px;
-
   z-index:50;
-
   width:56px;
   height:56px;
-
   padding:0;
-
   display:none;
   align-items:center;
   justify-content:center;
-
   background:#16a34a;
   color:#ffffff;
-
   border:3px solid #86efac;
   border-radius:50%;
-
   box-shadow:
     0 4px 0 #075d2b,
     0 6px 10px rgba(0,0,0,.45);
-
   font-size:14px;
   font-weight:950;
-
   cursor:pointer;
-
   touch-action:manipulation;
   pointer-events:auto;
-
   -webkit-user-select:none;
   user-select:none;
 }
@@ -666,68 +468,37 @@ select{
 }
 
 .evolution-button:active{
-  transform:
-    translateY(3px)
-    scale(.95);
-
-  box-shadow:
-    0 1px 0 #075d2b;
+  transform:translateY(3px) scale(.95);
+  box-shadow:0 1px 0 #075d2b;
 }
 
 .evolution-button:disabled{
   display:none;
 }
 
-/* =========================
-   操作説明
-========================= */
-
 .dial-guide{
   width:100%;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   padding:0 4px;
-
   color:#728095;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:8px;
   font-weight:900;
-
   text-align:center;
-
   white-space:nowrap;
 }
 
-/* =========================
-   下部表示
-========================= */
-
 .limit-indicator{
   width:100%;
-
   padding:2px 6px 0;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   border-top:1px solid #1f2b3b;
-
   color:#59697e;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:7px;
   font-weight:900;
 }
@@ -736,51 +507,34 @@ select{
   color:#b7c4d4;
 }
 
-/* =========================
-   進化演出
-========================= */
-
 .evolution-overlay{
   position:absolute;
   inset:0;
-
   z-index:100;
-
   display:none;
   align-items:center;
   justify-content:center;
-
   overflow:hidden;
-
   background:rgba(1,6,8,.68);
-
   pointer-events:none;
 }
 
 .evolution-overlay.active{
   display:flex;
-
-  animation:
-    evolutionBackground
-    1.5s ease both;
+  animation:evolutionBackground 1.5s ease both;
 }
 
 .evolution-flash{
   position:absolute;
-
   width:40px;
   height:40px;
-
   border:6px solid #ffffff;
   border-radius:50%;
-
   opacity:0;
 }
 
 .evolution-overlay.active .evolution-flash{
-  animation:
-    evolutionRing
-    1.35s ease-out both;
+  animation:evolutionRing 1.35s ease-out both;
 }
 
 .evolution-flash.second{
@@ -793,54 +547,34 @@ select{
 
 .evolution-text{
   position:relative;
-
   z-index:4;
-
   padding:12px 22px;
-
   color:#ffffff;
-
-  font-family:
-    "Courier New",
-    ui-monospace,
-    monospace;
-
+  font-family:"Courier New",ui-monospace,monospace;
   font-size:clamp(25px,7vw,42px);
   font-weight:950;
-
   letter-spacing:3px;
-
   text-align:center;
-
   opacity:0;
-
   text-shadow:
     0 2px 0 #087a39,
     0 0 12px #22c55e;
 }
 
 .evolution-overlay.active .evolution-text{
-  animation:
-    evolutionText
-    1.5s ease both;
+  animation:evolutionText 1.5s ease both;
 }
 
 .digital-unit.evolving{
-  animation:
-    monitorEvolution
-    1.5s ease;
+  animation:monitorEvolution 1.5s ease;
 }
 
 .digital-unit.evolving .dial-progress{
-  animation:
-    gaugeEvolution
-    1.5s ease;
+  animation:gaugeEvolution 1.5s ease;
 }
 
 .digital-unit.evolving .dial-hp-value{
-  animation:
-    numberEvolution
-    1.5s ease;
+  animation:numberEvolution 1.5s ease;
 }
 
 @keyframes evolutionBackground{
@@ -865,7 +599,6 @@ select{
   0%{
     width:30px;
     height:30px;
-
     opacity:0;
   }
 
@@ -875,16 +608,13 @@ select{
 
   70%{
     opacity:.8;
-
     border-color:#22c55e;
   }
 
   100%{
     width:650px;
     height:650px;
-
     opacity:0;
-
     border-width:2px;
   }
 }
@@ -892,29 +622,23 @@ select{
 @keyframes evolutionText{
   0%{
     opacity:0;
-
     transform:scale(.55);
-
     filter:blur(8px);
   }
 
   30%{
     opacity:1;
-
     transform:scale(1.15);
-
     filter:blur(0);
   }
 
   65%{
     opacity:1;
-
     transform:scale(1);
   }
 
   100%{
     opacity:0;
-
     transform:scale(1.06);
   }
 }
@@ -930,7 +654,6 @@ select{
 
   50%{
     border-color:#22c55e;
-
     box-shadow:
       inset 0 0 30px rgba(34,197,94,.35),
       0 0 24px rgba(34,197,94,.7);
@@ -948,13 +671,11 @@ select{
 
   20%{
     opacity:.15;
-
     stroke:#ffffff;
   }
 
   40%{
     opacity:1;
-
     stroke:#22c55e;
   }
 
@@ -970,38 +691,27 @@ select{
 @keyframes numberEvolution{
   0%{
     opacity:1;
-
     transform:scale(1);
-
     transform-origin:center;
   }
 
   25%{
     opacity:0;
-
     transform:scale(.55);
   }
 
   55%{
     opacity:1;
-
     transform:scale(1.2);
   }
 
   100%{
     opacity:1;
-
     transform:scale(1);
   }
 }
 
-/* =========================
-   iPhoneの表示高さが
-   700px以下の場合
-========================= */
-
 @media(max-height:700px){
-
   .top-control{
     flex-basis:40px;
   }
@@ -1030,10 +740,8 @@ select{
   .evolution-button{
     right:1%;
     bottom:-42px;
-
     width:50px;
     height:50px;
-
     font-size:12px;
   }
 
@@ -1042,12 +750,7 @@ select{
   }
 }
 
-/* =========================
-   高さ600px以下
-========================= */
-
 @media(max-height:600px){
-
   .top-control{
     flex-basis:37px;
   }
@@ -1076,12 +779,9 @@ select{
   .evolution-button{
     right:1%;
     bottom:-37px;
-
     width:44px;
     height:44px;
-
     border-width:2px;
-
     font-size:10px;
   }
 
@@ -1098,12 +798,7 @@ select{
   }
 }
 
-/* =========================
-   高さ520px以下
-========================= */
-
 @media(max-height:520px){
-
   .dial-stage{
     padding-bottom:39px;
   }
@@ -1119,10 +814,8 @@ select{
   .evolution-button{
     right:1%;
     bottom:-33px;
-
     width:40px;
     height:40px;
-
     font-size:9px;
   }
 }
@@ -1379,6 +1072,9 @@ select{
 </div>
 
 <script>
+const SVG_NAMESPACE =
+  "http://www.w3.org/2000/svg";
+
 const evolutionData = {
   "ヒトカゲ":[
     {name:"ヒトカゲ",maxHp:120},
@@ -1426,25 +1122,20 @@ const pokemonData = [
 const BASE_MAX_HP = 120;
 const MIN_HP = 0;
 const HP_STEP = 10;
-
 const TAP_MOVE_THRESHOLD = 8;
 
 const CENTER_X = 180;
 const CENTER_Y = 180;
-
 const DIAL_RADIUS = 137;
 const HANDLE_RADIUS = DIAL_RADIUS;
-
 const SCALE_INNER_RADIUS = 153;
 const SCALE_OUTER_RADIUS = 161;
 const LABEL_RADIUS = 169;
-
 const CIRCUMFERENCE =
   2 * Math.PI * DIAL_RADIUS;
 
 let hp = BASE_MAX_HP;
 let maxHp = BASE_MAX_HP;
-
 let selectedBasePokemon = "";
 let evolutionStage = 0;
 let isEvolving = false;
@@ -1452,7 +1143,6 @@ let isEvolving = false;
 let isDragging = false;
 let previousPointerAngle = null;
 let accumulatedAngle = 0;
-
 let pointerStartX = 0;
 let pointerStartY = 0;
 let pointerMoved = false;
@@ -1547,9 +1237,16 @@ const monitorName =
     "monitorName"
   );
 
-/* =========================
-   iPhone実表示高さ
-========================= */
+function isStandaloneMode(){
+
+  return (
+    window.navigator.standalone ===
+      true ||
+    window.matchMedia(
+      "(display-mode: standalone)"
+    ).matches
+  );
+}
 
 function updateAppHeight(){
 
@@ -1566,13 +1263,14 @@ function updateAppHeight(){
       window.visualViewport.height;
   }
 
-  /*
-    下端に10px相当の
-    安全余白を確保します。
-  */
+  const safeMargin =
+    isStandaloneMode()
+      ? 4
+      : 10;
 
   height =
-    Math.floor(height) - 10;
+    Math.floor(height) -
+    safeMargin;
 
   height =
     Math.max(
@@ -1624,10 +1322,6 @@ if(window.visualViewport){
   );
 }
 
-/* =========================
-   ポケモン一覧
-========================= */
-
 pokemonData.forEach(name => {
 
   const option =
@@ -1642,10 +1336,6 @@ pokemonData.forEach(name => {
     option
   );
 });
-
-/* =========================
-   進化情報
-========================= */
 
 function getEvolutionLine(){
 
@@ -1728,10 +1418,6 @@ function renderEvolutionButton(){
     !show;
 }
 
-/* =========================
-   円計算
-========================= */
-
 function polarToCartesian(
   centerX,
   centerY,
@@ -1778,10 +1464,6 @@ function getHpColor(){
   return "#00d47b";
 }
 
-/* =========================
-   目盛り
-========================= */
-
 function createDialScale(){
 
   scaleLines.innerHTML = "";
@@ -1823,7 +1505,7 @@ function createDialScale(){
 
     const line =
       document.createElementNS(
-        "http://www.w3.org/2000/svg",
+        SVG_NAMESPACE,
         "line"
       );
 
@@ -1868,7 +1550,7 @@ function createDialScale(){
 
       const text =
         document.createElementNS(
-          "http://www.w3.org/2000/svg",
+          SVG_NAMESPACE,
           "text"
         );
 
@@ -1896,10 +1578,6 @@ function createDialScale(){
     }
   }
 }
-
-/* =========================
-   HP描画
-========================= */
 
 function renderHP(){
 
@@ -2056,10 +1734,6 @@ function renderAll(){
       : "LIFE MONITOR";
 }
 
-/* =========================
-   ポインター位置
-========================= */
-
 function getPointerPosition(event){
 
   const rect =
@@ -2094,10 +1768,6 @@ function getPointerAngle(event){
   180 /
   Math.PI;
 }
-
-/* =========================
-   タップでHP移動
-========================= */
 
 function jumpToTappedHp(event){
 
@@ -2182,10 +1852,6 @@ function jumpToTappedHp(event){
 
   renderHP();
 }
-
-/* =========================
-   ドラッグ操作
-========================= */
 
 function updateHpFromDrag(event){
 
@@ -2281,10 +1947,6 @@ function updateHpFromDrag(event){
   previousPointerAngle =
     currentAngle;
 }
-
-/* =========================
-   Pointer操作
-========================= */
 
 dialContainer.addEventListener(
   "pointerdown",
@@ -2439,10 +2101,6 @@ dialContainer.addEventListener(
   }
 );
 
-/* =========================
-   キーボード操作
-========================= */
-
 dialContainer.addEventListener(
   "keydown",
   event => {
@@ -2485,10 +2143,6 @@ dialContainer.addEventListener(
   }
 );
 
-/* =========================
-   ポケモン変更
-========================= */
-
 pokemonSelect.addEventListener(
   "change",
   () => {
@@ -2517,11 +2171,6 @@ pokemonSelect.addEventListener(
   }
 );
 
-/* =========================
-   進化ボタンのイベントを
-   ダイヤル操作から分離
-========================= */
-
 evolutionButton.addEventListener(
   "pointerdown",
   event => {
@@ -2537,10 +2186,6 @@ evolutionButton.addEventListener(
     event.stopPropagation();
   }
 );
-
-/* =========================
-   進化処理
-========================= */
 
 evolutionButton.addEventListener(
   "click",
@@ -2659,10 +2304,6 @@ evolutionButton.addEventListener(
   }
 );
 
-/* =========================
-   RESET
-========================= */
-
 resetBtn.addEventListener(
   "click",
   () => {
@@ -2705,10 +2346,6 @@ resetBtn.addEventListener(
   }
 );
 
-/* =========================
-   ページスクロール防止
-========================= */
-
 document.addEventListener(
   "touchmove",
   event => {
@@ -2726,18 +2363,6 @@ document.addEventListener(
   }
 );
 
-/* =========================
-   起動
-========================= */
-
-updateAppHeight();
-
-renderAll();
-
-/* =========================
-   PWA Service Worker
-========================= */
-
 if("serviceWorker" in navigator){
 
   window.addEventListener(
@@ -2752,14 +2377,13 @@ if("serviceWorker" in navigator){
             "Service Worker registration failed:",
             error
           );
-
         });
-
     }
   );
-
 }
 
+updateAppHeight();
+renderAll();
 </script>
 
 </body>
